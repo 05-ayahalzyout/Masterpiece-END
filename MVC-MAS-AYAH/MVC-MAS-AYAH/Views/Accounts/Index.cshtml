@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Account>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+<div class="col-12">
+    <div class="card mb-4">
+        <div class="card-header pb-0">
+            <h6>جدل الاشتراكات </h6>
+        </div>
+        <div>
+            <a href="/Accounts/Create"class="btn btn-default" >انشاء اشتراك جديد➕</a>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">المدة</th>
+        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"> المبلغ</th>
+        
+        <th class="text-secondary opacity-7"></th>
+                           
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                        <div>
+                                            @*<img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">*@
+
+                                            @Html.DisplayFor(modelItem => item.Duration, new { @class = "avatar avatar-sm me-3" })
+
+                                            شهر
+                                        </div>
+                                     <td>
+                                         <div class="d-flex flex-column justify-content-center">
+                                             @*<h6 class="mb-0 text-sm">Alexa Liras</h6>*@
+                                             @Html.DisplayFor(modelItem => item.Price, new { @class = "d-flex flex-column justify-content-center" })
+                                             jd
+                                         </div>
+                                   </td>
+                                
+                                <td class="align-middle text-center text-sm" style="color:red!important">
+                                    @*@Html.ActionLink("حذف", "Delete", new { id = item.Price_Id }, new { @class = "badge badge-sm bg-gradient-secondary" })*@
+                                    <a href="/Accounts/DeleteConfirmed/@item.Price_Id">❌</a>
+                                </td>
+                                <!--<td class="align-middle text-center">-->
+                                    @*<span class="text-secondary text-xs font-weight-bold">11/01/19</span>*@
+                                    <!--@Html.ActionLink("تفاصيل", "Details", new { id = item.Price_Id }, new { @class = "text-secondary text-xs font-weight-bold" }) |
+
+                                </td>-->
+                                <td class="align-middle">
+                                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                
+            </a>
+                                    @Html.ActionLink("تعديل", "Edit", new { id = item.Price_Id }, new { @class = "text-secondary font-weight-bold text-xs" }) |
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

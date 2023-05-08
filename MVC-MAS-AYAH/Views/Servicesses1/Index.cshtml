@@ -1,0 +1,101 @@
+﻿@model IEnumerable<MVC_MAS_AYAH.Servicess>
+
+@{
+    ViewBag.Title = "الخدمات";
+}
+<style>
+    @@media only screen and (min-device-width:0px) and (max-device-width:480px) {
+
+
+        .breadcrumbs h2 {
+            font-size: x-large;
+        }
+    }
+</style>
+<main id="main">
+
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('../assets/img/breadcrumbs-bg.jpg');">
+        <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+            <h2>خدماتنا</h2>
+            <ol>
+                <li><a href="https://localhost:44305/Home/Index">الرئيسيه</a></li>
+                <li>خدماتنا</li>
+            </ol>
+
+        </div>
+    </div><!-- End Breadcrumbs -->
+    <section id="projects" class="projects">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>Works We Offer</h2>
+                <p>نملك افضل الخبراء القادرين بعون من الله عز وجل عمل اجمل المشاريع وهنا نقدم لكم الاعمال التي يقدموها</p>
+            </div>
+
+            <!--<div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">-->
+            @*@foreach(var item in Model)
+        {
+            <a href="/Home/_ImageSer/@item.Id">@item.Service_name</a>
+        }*@
+            <!--<ul class="portfolio-flters" data-aos="fade-up" data-aos-delay="100">
+    <li data-filter="*" class="filter-active" style="font-size:medium">(All Service)</li>
+    <br />-->
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="portfolio-flters" class="portfolio-flters" data-aos="fade-up" data-aos-delay="100">
+
+                        <li data-filter="*" class="filter-active" style="font-size:medium">All</li>
+                        @foreach (var item in Model)
+                        {
+
+                            <li data-filter=".filter-remodeling" style="font-size:medium">
+                                @Html.DisplayFor(modelItem => item.Service_name, new { @class = "mb-0 text-sm" })
+
+                            </li>
+
+                        }
+                    </ul>
+                </div>
+            </div>
+            @*@foreach ( var type in Model.Select(m =>m.Service_owners. ))*@
+
+
+            <!--<li data-filter=".filter-remodeling" style="font-size:medium">(construction-Roof Insulation)</li>
+            <li data-filter=".filter-construction" style="font-size:medium">(Tiles-Kitchen design)</li>
+            <li data-filter=".filter-repairs" style="font-size:medium">(Electricity Extension-Sewage extension-Water extension)</li>
+            <li data-filter=".filter-design" style="font-size:medium">(Interior Decoration-Wall painting)</li>
+            </ul>--><!-- End Projects Filters -->
+
+
+
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6 portfolio-item @Html.DisplayFor(modelItem => item.Servic_image)">
+                        <div class="portfolio-wrap">
+                            <img src="~/assetsUser/img/portfolio/@Html.DisplayFor(modelItem => item.Servic_image)" class="img-fluid" alt="@Html.DisplayFor(modelItem => item.Service_name)">
+                            <div class="portfolio-info">
+                                <!-- <h4>App 1</h4> -->
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.Servic_image)
+                                </p>
+                                <div class="portfolio-links">
+                                    <a href="~/assetsUser/img/portfolio/@Html.DisplayFor(modelItem => item.Servic_image)" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@Html.DisplayFor(modelItem => item.Service_name)"><i class="bx bx-plus"></i></a>
+                                    <a href="/photographers/PhotographerProfile/@Html.DisplayFor(modelItem => item.Id)" title="Go to the photographer's page" target="_blank"><i class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+
+            <br />
+
+            <a href="https://localhost:44305/Service_owners/Index" title="More Details" class="btn btn-outline-primary btn-sm" style=" color:white;   background: linear-gradient(45deg, rgb(19 94 148 / 80%), rgb(224 213 213 / 80%));margin-left:40%; font-size:larger"> رؤية صفحات اصحاب الخدمات</a>
+
+        </div>
+
+    </section>
+</main>

@@ -1,0 +1,119 @@
+﻿@model IEnumerable<MVC_MAS_AYAH.Subscription>
+@{
+    Layout = "~/Views/Shared/nav.cshtml";
+}
+
+
+@{
+    ViewBag.Title = " الاشتراكات";
+}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head runat="server">
+
+    <style>
+        .header .logo img {
+            max-height: 66px;
+            margin-right: 6px;
+        }
+        <!-- HTML ! -->
+        <button class="button-91" role="button" > Button 91</button >
+        /* CSS */
+        .button-91 {
+            color: #fff;
+            padding: 15px 25px;
+            background-color: #38D2D2;
+            background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+            box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
+            border-radius: 14px;
+            font-weight: bold;
+            font-size: 16px;
+            border: 0;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            cursor: pointer;
+        }
+        /*  .page-holder {
+        min-height: 100vh;*/
+        }
+
+        .bg-cover {
+            background-size: cover !important;
+        }
+
+        .display-4 {
+            font-size: calc(1.475rem + 2.7vw);
+            line-height: 1.2;
+            font-family: Caveat Regular;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 300;
+            font-family: Caveat Regular;
+        }
+
+        @@media only screen and (min-device-width:0px) and (max-device-width:480px) {
+            .navimg {
+                width: 76px;
+                height: 40px;
+            }
+
+            .breadcrumbs h2 {
+                font-size: x-large;
+            }
+        }
+    </style>
+</head>
+<body style="background: rgb(42,32,37); background: linear-gradient(209deg, rgba(42,32,37,0.912570130591299) 18%, rgba(15,55,94,0.3501050078234419) 100%); background-repeat: no-repeat; height:800px">
+
+    <main id="main">
+        <form id="form1" runat="server">
+            <div>
+                <div>
+
+                    <div class="container py-5">
+                        <header class="text-center text-white py-5">
+                            <h1 class="display-4 font-weight-bold mb-4">
+                                الاشتراكات
+                            </h1>
+                            <br /><br />
+                            <p class="lead mb-0" style="font-weight: 900">
+                                "
+                                ‏اختر طريقة الدفع التي تناسبك للاشتراك وضمان استمرارية خدماتنا لك ، تأكد من الدفع بالطريقة التي تناسبك
+                                ‏ضمن الخيارات المتاحة لك   "
+                            </p>
+                        </header>
+
+
+                    </div>
+                </div>
+                <div>
+                    <div style=" display: grid;  grid-template-columns: auto auto auto ; margin-left:8%  "  class="container">
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="text-white text-center" style="margin-top: 20%; background: rgb(42,32,37); background: linear-gradient(209deg, rgba(42,32,37,0.912570130591299) 51%, rgba(162,162,137,0.3501050078234419) 100%); background-repeat: no-repeat; width: 80%; height: 250px; border: solid 3px #514828c4; ">
+                                <h3 style="font-family:Caveat Regular;text-align:center">
+                                    <br /> نوع الاشتراك
+                                </h3>
+                                <br />
+                                <h3 style="font-family:Caveat Regular;font-size:large ; text-align:center" class="text-center">الاشترك خلال  @item.Subtype شهر <br />الدفع @item.Amount دينار اردني</h3><br />
+                                <a ID="Button2" href="https://localhost:44305/Home/kash" runat="server" CssClass="button-91" name="اشترك" class="text-center" Style="
+                                 color: #fff;font-family:Caveat Regular;padding: 15px 25px;background-color:rgb(42,32,37);
+                                 background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+                                 box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);border-radius: 14px;font-weight: bold;font-size: 16px;border: 0;user-select: none;-webkit-user-select: none;touch-action: manipulation;cursor: pointer;">اختيار</a>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿@model MVC_MAS_AYAH.Account
+
+@{
+    ViewBag.Title = "حذف";
+}
+
+@{
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+<div class="border-radius-xl mt-3 mx-3 position-relative" style="background-image: url('../../ayahadmn/assets/img/vr-bg.jpg'); background-size: cover;">
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+
+        <hr class="horizontal dark mt-0">
+
+
+    </aside>
+    <main class="main-content mt-1 border-radius-lg">
+        <div class="section min-vh-85 position-relative transform-scale-0 transform-scale-md-7">
+
+
+
+
+            <h2>حذف</h2>
+
+            <h3>هل انت متاكد من انك تريد الحذف؟</h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        <label>مبلغ الاشتراك</label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Financial_accounts)
+                    </dd>
+
+                    <dt>
+                        <label>البريد الالكتروني</label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AspNetUser.Email)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="حذف" class="btn btn-default"  style="background-color:burlywood;color:black" /> |
+                        @Html.ActionLink("العودة للشاشة الرئيسيه", "Index")
+                    </div>
+                }
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </main>
+</div>

@@ -1,0 +1,149 @@
+﻿@model IEnumerable<MVC_MAS_AYAH.Servicess>
+
+@{
+    ViewBag.Title = "الخدمات";
+}
+
+
+
+<style>
+    @@media only screen and (min-device-width:0px) and (max-device-width:480px) {
+
+
+        .breadcrumbs h2 {
+            font-size: x-large;
+        }
+    }
+</style>
+<style>
+
+
+    .height {
+        height: 100vh;
+    }
+
+    .cards {
+        max-width: 1200px;
+        width: 100%;
+        margin: auto;
+        padding: 32px 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+    }
+
+    .card {
+        background: #fff;
+        /width: 23%;
+        / width: calc(100% / 3 - 2%);
+        border-radius: 8px;
+        margin: 0 1% 16px 1%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-flow: column;
+        flex-flow: column;
+        box-shadow: 0 0 4px -2px #444;
+        /* height: 270px;   add */
+    }
+
+
+
+    .main-heading {
+        font-size: 40px;
+        color: red !important;
+    }
+
+    .ratings i {
+        color: orange;
+    }
+
+    .user-ratings h6 {
+        margin-top: 2px;
+    }
+
+    .colors {
+        display: flex;
+        margin-top: 2px;
+    }
+
+        .colors span {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            margin-right: 6px;
+        }
+
+            .colors span:nth-child(1) {
+                background-color: red;
+            }
+
+            .colors span:nth-child(2) {
+                background-color: blue;
+            }
+
+            .colors span:nth-child(3) {
+                background-color: yellow;
+            }
+
+            .colors span:nth-child(4) {
+                background-color: purple;
+            }
+
+    .btn-danger {
+        height: 48px;
+        font-size: 18px;
+    }
+</style>
+
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('../assets/img/breadcrumbs-bg.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+        <h2>خدماتنا</h2>
+        <ol>
+            <li><a href="https://localhost:44305/Home/Index">الرئيسيه</a></li>
+            <li>خدماتنا</li>
+        </ol>
+
+    </div>
+</div>
+@*@foreach (var item in Model)
+    {
+        <div>
+            <img src="~/images/@item.Servic_image" />
+        </div>
+        <div>
+            @item.Service_name
+        </div>
+        <a href="/Service_owners/Index/@item.Id" class="btn btn-info">رؤيه اصحاب الخدمه</a>
+    }*@
+
+
+<div class="row container" style="height: 800px">
+        <!-- products section -->
+        @foreach (var item in Model)
+        {
+
+            <div class="col-lg-3" style="margin-left: 6%; margin-top: 7% ; ">
+
+
+                <div style="width:100%; height:150px">
+                    <img src="~/images/@item.Servic_image" style="width: 100%; height: 200px; margin-left: 25%;" />
+                </div>
+                    <div class="d-flex justify-content-between align-items-center mt-2 mb-2 " style="margin-left: 25%;">
+                        <p style="text-align:center ;width:100%;font-size: larger; color: white; font-weight: 400; background-color: rgb(0 0 0 / 67%) "> @item.Service_name</p>
+
+                    </div>
+
+                    @*<a href="/Service_owners/Index/@item.Id" class="btn btn-danger">رؤيه اصحاب الخدمه</a>*@
+                    <a href="/Service_owners/Index/@item.Id" title="More Details" class="btn btn-outline-primary btn-sm" style=" color:white;   background: linear-gradient(45deg, rgb(19 94 148 / 80%), rgb(224 213 213 / 80%));margin-left:55%; font-size:smaller;margin-top:5% "> رؤيه اصحاب الخدمه </a>
+
+            </div>
+
+        }
+    
+</div>

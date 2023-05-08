@@ -1,0 +1,137 @@
+﻿@model MVC_MAS_AYAH.Service_owners
+
+
+@{
+    ViewBag.Title = "الصفحة الشخصية";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <style>
+        .header .logo img {
+            max-height: 66px;
+            margin-right: 6px;
+        }
+
+        gradient-custom-2 {
+            background: #8f7936;
+            background: linear-gradient(212deg, rgba(42,32,37,1) 0%, #ffffff 100%);
+        }
+
+        @@media only screen and (min-device-width:0px) and (max-device-width:480px) {
+            .navimg {
+                width: 76px;
+                height: 40px;
+            }
+            .breadcrumbs h2 {
+                font-size: x-large;
+            }
+        }
+    </style>
+   
+</head>
+<body>
+    <main id="main">
+        <div class="breadcrumbs d-flex align-items-center" style="background-image:url('../../assets/img/breadcrumbs-bg.jpg');">
+            <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+                <h2>profile</h2>
+                <ol>
+                    <li><a href="https://localhost:44305/Home/Index">Home</a></li>
+                    <li>profile</li>
+                </ol>
+
+            </div>
+        </div><!-- End Breadcrumbs -->
+
+        <form id="form1" runat="server">
+
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col col-lg-9 col-xl-7">
+                        <div class="card">
+                            <div class="rounded-top text-white d-flex flex-row" style="	background: linear-gradient(45deg, rgb(2 79 135 / 80%), rgb(73 71 71 / 80%));
+; height:200px;">
+                                <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                                    <img src="~/assets/img/@Model.Photograph"
+                                         alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                                         style="width: 150px; z-index: 1" />
+
+                                    @if (User.IsInRole("ServiceOwner"))
+                                    {<a type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" href="/Service_owners/EditProfile"
+                                        style="z-index: 1; 	background: linear-gradient(45deg, rgba(7, 45, 72, 0.8), rgba(195, 195, 195, 0.8));
+">
+                                            تعديلprofile
+                                        </a>}
+
+
+                                </div>
+                                <div class="ms-3" style="margin-top: 130px;">
+                                    <h5>Welcome to my service </h5>
+                                    <p>I hope you like it</p>
+                                </div>
+                            </div>
+                            <br /><br />
+                            <div class="card-body p-4 text-black">
+                                <div class="mb-5">
+                                    <div class="p-4" style="background-color: #f8f9fa;">
+                                        <p class="font-italic mb-1">Full name: <asp:Label ID="Label1" runat="server" Text="Label">@Model.AspNetUser.PhoneNumber</asp:Label></p>
+
+                                        <p class="font-italic mb-1">Email :<a href="ayahizzat@hotmail.com " target="_blank">@Model.AspNetUser.Email</a></p>
+                                        <p class="font-italic mb-0">Phone Number:<asp:Label ID="Label2" runat="server" Text="Label">@Model.Number</asp:Label></p>
+
+                                    </div>
+                                </div>
+                                <div class="mb-5">
+                                    <p class="lead fw-normal mb-1">About</p>
+                                    <div class="p-4" style="background-color: #f8f9fa;">
+                                        <p class="font-italic mb-1">
+                                            @Model.Descripion
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <p class="lead fw-normal mb-0">Some of the work he has done </p>
+                                    @*<p class="mb-0"><a href="https://localhost:44305/Subscriptions/Index" class="text-muted">Done</a></p>*@
+                                    @if (User.IsInRole("ServiceOwner"))
+                                    {<a type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" href="https://localhost:44305/Subscriptions/Index" style="z-index: 1; 	background: linear-gradient(45deg, rgba(7, 45, 72, 0.8), rgba(195, 195, 195, 0.8));
+">
+                                            Done
+                                        </a>}
+                                </div>
+                                <div class="row g-2">
+                                    <div class="col mb-2">
+                                        <img src="~/assets/img/@Model.Image_to_work" height="200"
+                                             alt="image 1" class="w-100 rounded-3">
+
+                                    </div>
+                                    <div class="col mb-2">
+                                        <img src="~/assets/img/@Model.Image_to_work10" height="200"
+                                             alt="image 1" class="w-100 rounded-3">
+
+                                    </div>
+                                </div>
+                                <div class="row g-2">
+                                    <div class="col">
+                                        <img src="~/assets/img/@Model.Image_to_work2" height="200"
+                                             alt="image 1" class="w-100 rounded-3">
+
+                                    </div>
+                                    <div class="col">
+                                        <img src="~/assets/img/@Model.Image_to_work3" height="200"
+                                             alt="image 1" class="w-100 rounded-3" @*height="232px"*@>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </main>
+</body>
+</html>
+
+

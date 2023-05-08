@@ -1,0 +1,144 @@
+﻿@model Service_owners
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Service_owners</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photograph)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photograph)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_to_work)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_to_work)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_to_work2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_to_work2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_to_work3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_to_work3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_to_work4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_to_work4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_to_work5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_to_work5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_to_work6)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_to_work6)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_to_work7)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_to_work7)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_to_work8)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_to_work8)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_to_work9)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_to_work9)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_to_work10)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_to_work10)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Servicess.Service_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Servicess.Service_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<MVC_MAS_AYAH.Service_owners>
+
+
+@{
+    ViewBag.Title = "الخدمات";
+}
+
+
+
+<style>
+    @@media only screen and (min-device-width:0px) and (max-device-width:480px) {
+
+
+        .breadcrumbs h2 {
+            font-size: x-large;
+        }
+    }
+</style>
+
+<main id="main">
+
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('../assets/img/breadcrumbs-bg.jpg');">
+        <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+            <h2>خدماتنا</h2>
+            <ol>
+                <li><a href="https://localhost:44305/Home/Index">الرئيسيه</a></li>
+                <li>خدماتنا</li>
+            </ol>
+
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+
+
+
+    <section id="projects" class="projects">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>الخدمات</h2>
+                <p>نملك افضل الخبراء القادرين بعون من الله عز وجل عمل اجمل المشاريع وهنا نقدم لكم الاعمال التي يقدموها</p>
+            </div>
+
+            <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
+
+                <ul class="portfolio-flters" data-aos="fade-up" data-aos-delay="100">
+                    <li data-filter="*" class="filter-active" style="font-size:medium">(All Service)</li>
+                    <br />
+                    @*@foreach (var type in Model.Select(a => a.Servicess.Service_name).Distinct())
+                    {
+                        <li data-filter=".@type" style="font-size:medium">
+                            @type
+                        </li>
+                    }*@
+
+
+                </ul><!-- End Projects Filters -->
+
+                <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 portfolio-item @item.Servicess.Service_name">
+                            <div class="portfolio-content h-100">
+                                <img src="~/images/@item.Image_to_work10" class="img-fluid" alt="@item.Servicess.Service_name">
+                                <div class="portfolio-info">
+                                    <p>@item.Servicess.Service_name</p>
+                                    <div class="portfolio-links">
+                                        <a href="~/images/@item.Image_to_work10" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@item.Servicess.Service_name"><i class="bx bx-plus"></i></a>
+                                        <a href="Service_owners/Index/@item.Id" title="Go to the photographer's page" target="_blank"><i class="bx bx-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Projects Item -->
+                    }
+                </div>
+                <!-- End Projects Container -->
+
+            </div>
+
+        </div>
+        <a href="https://localhost:44305/Service_owners/Index" title="More Details" class="btn btn-outline-primary btn-sm" style=" color:white;   background: linear-gradient(45deg, rgb(19 94 148 / 80%), rgb(224 213 213 / 80%));margin-left:40%; font-size:larger"> رؤية صفحات اصحاب الخدمات</a>
+
+    </section>
+
+
+
+</main>
+
+
+

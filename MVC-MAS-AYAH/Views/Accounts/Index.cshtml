@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MVC_MAS_AYAH.Account>
+
+@{
+    ViewBag.Title = " جدول اصحاب الخدمات المشتركين  ";
+}
+
+@{
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+<div class="col-12">
+    <div class="card mb-4">
+        <div class="card-header pb-0">
+            <h6>جدول اصحاب الخدمات المشتركين</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">المبلغ</th>
+        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"> الايميل</th>
+        
+        <th class="text-secondary opacity-7"></th>
+                           
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                        <div>
+                                            @*<img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">*@
+                                            @Html.DisplayFor(modelItem => item.Financial_accounts, new { @class = "avatar avatar-sm me-3" })
+
+
+                                        </div>
+                                     <td>
+                                         <div class="d-flex flex-column justify-content-center">
+                                             @*<h6 class="mb-0 text-sm">Alexa Liras</h6>*@
+                                             @Html.DisplayFor(modelItem => item.AspNetUser.Email, new { @class = "d-flex flex-column justify-content-center" })
+
+                                         </div>
+                                   </td>
+                                
+                                <td class="align-middle text-center text-sm" style="color:red!important">
+                                    @*<span class="badge badge-sm bg-gradient-secondary">Offline</span>*@
+                                    @Html.ActionLink("حذف", "Delete", new { id = item.Id }, new { @class = "badge badge-sm bg-gradient-secondary" })
+
+                                </td>
+                                <td class="align-middle text-center">
+                                    @*<span class="text-secondary text-xs font-weight-bold">11/01/19</span>*@
+                                    @Html.ActionLink("تفاصيل", "Details", new { id = item.Id }, new { @class = "text-secondary text-xs font-weight-bold" }) |
+
+                                </td>
+                                
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

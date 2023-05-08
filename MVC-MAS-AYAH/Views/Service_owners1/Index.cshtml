@@ -1,0 +1,130 @@
+﻿@model IEnumerable<MVC_MAS_AYAH.Service_owners>
+
+@{
+    ViewBag.Title = "جدول اصحاب الخدمات";
+}
+@{
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<div class="col-12">
+    <div class="card mb-4">
+        <div class="card-header pb-0">
+            <h6>جدول اصحاب الخدمات</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">صورة صاحب الخدمة</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">الخدمة</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الرقم</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">تفاصيل صاحب الخدمة</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الايميل</th>
+
+                            <th class="text-secondary opacity-7"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div>
+                                        @*<img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">*@
+                                        <img src="~/images/@item.Photograph" width="50" height="50" class=" avatar avatar-sm me-3" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        @*<h6 class="mb-0 text-sm">Alexa Liras</h6>*@
+                                        @Html.DisplayFor(modelItem => item.Servicess.Service_name, new { @class = "mb-0 text-sm" })
+
+                                    </div>
+                                </td>
+                                <td>
+                                    @*<p class="text-xs font-weight-bold mb-0">Programator</p>
+            <p class="text-xs text-secondary mb-0">Developer</p>*@
+                                    @Html.DisplayFor(modelItem => item.Number, new { @class = "text-xs font-weight-bold mb-0" })
+
+                                </td>
+
+                               
+                                <td>
+                                    @*<p class="text-xs font-weight-bold mb-0">Programator</p>
+            <p class="text-xs text-secondary mb-0">Developer</p>*@
+                                    @Html.DisplayFor(modelItem => item.Descripion, new { @class = "text-xs font-weight-bold mb-0" })
+
+                                </td>
+                                <td>
+                                    @*<p class="text-xs font-weight-bold mb-0">Programator</p>
+            <p class="text-xs text-secondary mb-0">Developer</p>*@
+                                    @Html.DisplayFor(modelItem => item.AspNetUser.Email, new { @class = "text-xs font-weight-bold mb-0" })
+
+                                </td>
+
+                                <td>
+                                    <div>
+                                        @*<img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">*@
+                                        <img src="~/images/@item.Image_to_work" width="50" height="50" class=" avatar avatar-sm me-3" />
+
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div>
+                                        @*<img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">*@
+                                        <img src="~/images/@item.Image_to_work10" width="50" height="50" class=" avatar avatar-sm me-3" />
+
+                                    </div>
+                                </td>
+
+
+
+                                <td>
+                                    <div>
+                                        @*<img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">*@
+                                        <img src="~/images/@item.Image_to_work2" width="50" height="50" class="avatar avatar-sm me-3" />
+
+                                    </div>
+                                </td>
+
+
+                                <td>
+                                    <div>
+                                        @*<img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">*@
+                                        <img src="~/images/@item.Image_to_work3" width="50" height="50" class="avatar avatar-sm me-3" />
+
+                                    </div>
+                                </td>
+
+                               
+
+
+                                <td class="align-middle text-center text-sm" style="color:red!important">
+                                    @*<span class="badge badge-sm bg-gradient-secondary">Offline</span>*@
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "badge badge-sm bg-gradient-secondary" })
+
+                                </td>
+                                <td class="align-middle text-center">
+                                    @*<span class="text-secondary text-xs font-weight-bold">11/01/19</span>*@
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "text-secondary text-xs font-weight-bold" }) |
+
+                                </td>
+                                <td class="align-middle">
+                                    @*<a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="تعديلuser">
+                Edit
+            </a>*@
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "text-secondary font-weight-bold text-xs" }) |
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

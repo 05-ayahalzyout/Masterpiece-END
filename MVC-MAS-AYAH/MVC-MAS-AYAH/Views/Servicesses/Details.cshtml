@@ -1,0 +1,66 @@
+﻿@model Servicess
+
+@{
+    ViewBag.Title = "تفاصيل";
+}
+@{
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+<div class="border-radius-xl mt-3 mx-3 position-relative" style="background-image: url('../../ayahadmn/assets/img/vr-bg.jpg'); background-size: cover;">
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+
+        <hr class="horizontal dark mt-0">
+
+
+    </aside>
+    <main class="main-content mt-1 border-radius-lg">
+        <div class="section min-vh-85 position-relative transform-scale-0 transform-scale-md-7">
+
+
+
+            <h2>تفاصيل</h2>
+
+            <div>
+                <h4>جدول الخدمات</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        <label>اسم الخدمة</label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Service_name)
+                    </dd>
+
+                    <dt>
+                        <label>صورة الخدمة</label>
+                    </dt>
+
+                    <dd>
+                        <img src="~/images/@Model.Servic_image" style="width:100px;height:100px" />
+                    </dd>
+
+                    <dt>
+                        <label>وصف</label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("تعديل", "Edit", new { id = Model.Id }) |
+                @Html.ActionLink("العودة للشاشة الرئيسيه", "Index")
+            </p>
+
+
+
+
+
+
+
+        </div>
+    </main>
+</div>

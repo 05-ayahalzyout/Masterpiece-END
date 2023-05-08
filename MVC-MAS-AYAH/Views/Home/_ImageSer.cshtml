@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MVC_MAS_AYAH.Service_owners>
+
+
+@{int y = 0;
+    foreach (var item in Model)
+    {
+
+        if (y > 6)
+        {
+    <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
+        <div class="portfolio-content h-100">
+            @*<img src="~/assets/img/projects/construction-1.jpg"  alt="">*@
+            @*@Html.DisplayFor(modelItem => , new { @class = "" })*@
+            <img src="~/images/@item.Image_to_work10" width="400" height="250" />
+
+            <div class="portfolio-info">
+                <h4>@Html.DisplayFor(modelItem => item.Servicess.Service_name)</h4>
+                <p>
+                    @Html.DisplayFor(modelItem => item.Servicess.Description)
+                </p>
+                <a href="~/images/@item.Image_to_work10" title="@Html.DisplayFor(modelItem => item.Servicess.Service_name)" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="https://localhost:44305/Service_owners/Index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+            </div>
+
+        </div>
+
+    </div>
+        }
+   y++;
+    @*@Html.DisplayFor(modelItem => item.Image_to_work)
+
+    @Html.DisplayFor(modelItem => item.Image_to_work2)
+
+    @Html.DisplayFor(modelItem => item.Image_to_work3)
+
+    @Html.DisplayFor(modelItem => item.Image_to_work4)
+
+    @Html.DisplayFor(modelItem => item.Image_to_work10)*@
+
+
+}
+
+    }

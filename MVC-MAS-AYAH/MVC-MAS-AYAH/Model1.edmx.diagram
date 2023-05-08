@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="076e1de95b624283a0905694d8b0109b" Name="Diagram1" ZoomLevel="57">
+        <EntityTypeShape EntityType="MasterpieceModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MasterpieceModel.Account" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MasterpieceModel.AspNetRole" Width="1.5" PointX="0.75" PointY="8.5" />
+        <EntityTypeShape EntityType="MasterpieceModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="19.25" />
+        <EntityTypeShape EntityType="MasterpieceModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="8.375" />
+        <EntityTypeShape EntityType="MasterpieceModel.AspNetUserRole" Width="1.5" PointX="5.25" PointY="5.375" />
+        <EntityTypeShape EntityType="MasterpieceModel.AspNetUser" Width="1.5" PointX="3" PointY="6.875" />
+        <EntityTypeShape EntityType="MasterpieceModel.Service_owners" Width="1.5" PointX="8.25" PointY="7.125" />
+        <EntityTypeShape EntityType="MasterpieceModel.Servicess" Width="1.5" PointX="6" PointY="11.375" />
+        <EntityTypeShape EntityType="MasterpieceModel.Subscription" Width="1.5" PointX="5.25" PointY="16.125" />
+        <EntityTypeShape EntityType="MasterpieceModel.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" />
+        <AssociationConnector Association="MasterpieceModel.FK_AspNetUsers_AspNetRoles" />
+        <AssociationConnector Association="MasterpieceModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" />
+        <AssociationConnector Association="MasterpieceModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MasterpieceModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MasterpieceModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MasterpieceModel.FK_Service_owners_AspNetUsers" />
+        <AssociationConnector Association="MasterpieceModel.FK_Subscriptionss_AspNetUsers" />
+        <AssociationConnector Association="MasterpieceModel.FK_Service_owners_Servicess" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

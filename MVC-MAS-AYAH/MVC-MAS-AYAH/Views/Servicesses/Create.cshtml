@@ -1,0 +1,82 @@
+﻿@model Servicess
+@{
+    ViewBag.Title = "انشاء";
+}
+@{
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+<div class="border-radius-xl mt-3 mx-3 position-relative" style="background-image: url('../../ayahadmn/assets/img/vr-bg.jpg'); background-size: cover;">
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+
+        <hr class="horizontal dark mt-0">
+
+
+    </aside>
+    <main class="main-content mt-1 border-radius-lg">
+        <div class="section min-vh-85 position-relative transform-scale-0 transform-scale-md-7">
+
+
+
+            <h2>انشاء</h2>
+
+            @using (Html.BeginForm("Create", "Servicesses", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>خدمة</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label>اسم الخدمة</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Service_name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Service_name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h5> صورة الخدمة</h5>
+
+                        @*@Html.LabelFor(model => model.Servic_image, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-10">
+                            <input type="file" class="form-control" name="picture" accept="image/*" />
+
+
+                            @*@Html.EditorFor(model => model.Servic_image, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.Servic_image, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label>وصف</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="انشاء" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("العودة للشاشة الرئيسيه", "Index")
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+    </main>
+</div>

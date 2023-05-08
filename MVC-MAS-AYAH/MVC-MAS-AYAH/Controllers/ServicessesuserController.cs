@@ -1,0 +1,134 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using MVC_MAS_AYAH;
+
+namespace MVC_MAS_AYAH.Controllers
+{
+    public class ServicessesuserController : Controller
+    {
+        private MasterpieceEntities db = new MasterpieceEntities();
+
+        // GET: Servicessesuser
+        //public ActionResult Index()
+        //{
+        //    ViewBag.Serviceowners = db.Service_owners.ToList();
+
+        //    return View(db.Servicesses.ToList());
+        //}
+        public ActionResult ser()
+        {
+            return View(db.Servicesses.ToList());
+        }
+
+
+        // GET: Servicessesuser/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Servicess servicess = db.Servicesses.Find(id);
+            if (servicess == null)
+            {
+                return HttpNotFound();
+            }
+            return View(servicess);
+        }
+
+        // GET: Servicessesuser/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Servicessesuser/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Service_name,Servic_image,Description")] Servicess servicess)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Servicesses.Add(servicess);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(servicess);
+        }
+
+        // GET: Servicessesuser/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Servicess servicess = db.Servicesses.Find(id);
+            if (servicess == null)
+            {
+                return HttpNotFound();
+            }
+            return View(servicess);
+        }
+
+        // POST: Servicessesuser/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Service_name,Servic_image,Description")] Servicess servicess)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(servicess).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(servicess);
+        }
+
+        // GET: Servicessesuser/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Servicess servicess = db.Servicesses.Find(id);
+            if (servicess == null)
+            {
+                return HttpNotFound();
+            }
+            return View(servicess);
+        }
+
+        // POST: Servicessesuser/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Servicess servicess = db.Servicesses.Find(id);
+            db.Servicesses.Remove(servicess);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

@@ -1,0 +1,178 @@
+﻿@model MVC_MAS_AYAH.Service_owners
+
+@{
+    ViewBag.Title = "تعديل الصفحة الشخصية";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var db = new MVC_MAS_AYAH.MasterpieceEntities();
+    var serviceList = db.Servicesses.ToList();
+}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <style>
+        .header .logo img {
+            max-height: 66px;
+            margin-right: 6px;
+        }
+
+        gradient-custom-2 {
+            background: #8f7936;
+            background: linear-gradient(212deg, rgba(42,32,37,1) 0%, #ffffff 100%);
+        }
+
+        @@media only screen and (min-device-width:0px) and (max-device-width:480px) {
+            .navimg {
+                width: 76px;
+                height: 40px;
+            }
+
+            .Abaut {
+                width: 10%
+            }
+
+            .breadcrumbs h2 {
+                font-size: x-large;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main id="main">
+        <div class="breadcrumbs d-flex align-items-center" style="background-image:url('../../assets/img/breadcrumbs-bg.jpg');">
+            <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+                <h2>صفحة صاحب الخدمة</h2>
+                <ol>
+                    <li><a href="https://localhost:44305/Home/Index">الرئيسيه</a></li>
+                    <li>صفحة صاحب الخدمة</li>
+                </ol>
+
+            </div>
+        </div><!-- End Breadcrumbs -->
+        @* <form id="form1" runat="server">*@
+
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-lg-9 col-xl-7">
+                    @using (Html.BeginForm("EditProfile1", "Service_owners", FormMethod.Post, new { enctype = "multipart/form-data",id= "myForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="card">
+                            <div class="rounded-top text-white d-flex flex-row" style="	background: linear-gradient(45deg, rgb(2 79 135 / 80%), rgb(73 71 71 / 80%)); height:200px;">
+                                <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+
+
+
+                                    <img src="~/assets/img/@Model.Photograph"
+                                         alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                                         style="width: 150px;" />
+
+                                </div>
+
+                                <span>
+                                    <input type="file" name="Photograph" accept="image/*" style="margin-top:35%" />
+                                </span>
+                                <div>
+                                </div>
+
+                            </div>
+                            <br /><br />
+                            <div class="card-body p-4 text-black">
+                                <div class="mb-5">
+                                    <div class="p-4" style="background-color: #f8f9fa;">
+                                        <p class="font-italic mb-1">
+                                            Full name:
+                                            <input type="text" name="name" value="@Model.AspNetUser.PhoneNumber" />
+                                        </p>
+
+                                        <p class="font-italic mb-1">Email : <a href="ayahizzat@hotmail.com " target="_blank">@Model.AspNetUser.Email</a></p>
+                                        <p class="font-italic mb-0">Phone Number: <input type="number" name="Number" value="@Model.Number" />  @*<asp:Label ID="Label2" runat="server" Text="Label">@Model.Number</asp:Label>*@</p>
+
+                                    </div>
+                                </div>
+                                <div class="mb-5">
+                                    <p class="lead fw-normal mb-1">About</p>
+                                    <div class="p-4" style="background-color: #f8f9fa;">
+                                        <p class="font-italic mb-1">
+                                            @*@Model.Descripion*@
+                                            <textarea type="text" clss="Abaut" name="Descripion" cols="60" rows="10" value="@Model.Descripion"></textarea>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+
+                                    @Html.DropDownListFor(model => model.Service_Id, new SelectList(serviceList, "Id", "Service_name"), new { @class = "form-select form-control" })
+                                </div>
+                                <br /><br />
+                                <div class="row g-2">
+                                    <div class="col mb-2">
+                                        <img src="~/assets/img/@Model.Image_to_work" height="200"
+                                             alt="image 1" class="w-100 rounded-3">
+                                        <input type="file" name="Image_to_work" accept="image/*" />
+
+
+                                    </div>
+                                    <div class="col mb-2">
+                                        <img src="~/assets/img/@Model.Image_to_work10" height="200"
+                                             alt="image 1" class="w-100 rounded-3">
+                                        <input type="file" name="Image_to_work10" accept="image/*" />
+
+                                    </div>
+                                </div>
+                                <div class="row g-2">
+                                    <div class="col">
+                                        <img src="~/assets/img/@Model.Image_to_work2" height="200"
+                                             alt="image 1" class="w-100 rounded-3">
+                                        <input type="file" name="Image_to_work2" accept="image/*" />
+
+                                    </div>
+                                    <div class="col">
+                                        <img src="~/assets/img/@Model.Image_to_work3" height="200"
+                                             alt="image 1" class="w-100 rounded-3">
+                                        <input type="file" name="Image_to_work3" accept="image/*" />
+
+                                    </div>
+
+                                </div>
+                                <br />
+                                <br />
+                                <div>
+                                    @*<input type="submit" class="btn btn-outline-dark" data-mdb-ripple-color="dark" value="Save" style="z-index: 1; margin-left:45S%;	background: linear-gradient(45deg, rgba(7, 45, 72, 0.8), rgba(195, 195, 195, 0.8));" />*@
+                                    <button class="btn btn-outline-dark" style="z-index: 1; margin-left:45S%;	background: linear-gradient(45deg, rgba(7, 45, 72, 0.8), rgba(195, 195, 195, 0.8));" onclick="event.preventDefault();
+                                            Swal.fire({
+                                            title: 'شكرا لك' ,
+                                            text: 'تم تعديل معلوماتك بنجاح' ,
+                                            icon: 'success' ,
+                                            confirmButtonColor: '#0A4438' ,
+                                            confirmButtonText: 'تم' ,
+                                            }).then((result)=>
+                                        {
+                                        if (result.isConfirmed) {
+                                        document.getElementById('myForm').submit();
+                                        }
+                                        });">
+                                        اشترك
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        @* </form>*@
+    </main>
+</body>
+</html>
+
+
+

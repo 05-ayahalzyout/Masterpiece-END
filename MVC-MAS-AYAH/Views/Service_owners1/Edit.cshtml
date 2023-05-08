@@ -1,0 +1,162 @@
+﻿@model MVC_MAS_AYAH.Service_owners
+
+@{
+    ViewBag.Title = "تعديل";
+}
+@{
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+<div class="border-radius-xl mt-3 mx-3 position-relative" style="background-image: url('../../ayahadmn/assets/img/vr-bg.jpg'); background-size: cover;">
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+
+        <hr class="horizontal dark mt-0">
+
+
+    </aside>
+    <main class="main-content mt-1 border-radius-lg">
+        <div class="section min-vh-85 position-relative transform-scale-0 transform-scale-md-7">
+
+            <h2>التعديل</h2>
+
+
+
+            @using (Html.BeginForm("Edit", "Service_owners1", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>جدول صاحب الخدمة</h4>
+                    <hr />
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+
+                    <div class="form-group">
+                        <h5> صورة صاحب الخدمة</h5>
+                        <div class="col-md-10">
+                            <img src="~/Images/@Model.Photograph" style="width:70px;height:70px;" /><br />
+                            <input type="file" value="@Model.Photograph" class="form-control" name="picture" accept="image/" />
+                            @Html.ValidationMessageFor(model => model.Photograph, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>اسم الخدمة</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Servicess.Service_name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Servicess.Service_name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="form-group">
+                        <label>رقم الهاتف</label>
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>وصف</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Descripion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Descripion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label>البريد الالكتروني</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AspNetUser.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AspNetUser.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <h5>صورة الخدمة</h5>
+                        <div class="col-md-10">
+                            <img src="~/Images/@Model.Image_to_work" style="width:70px;height:70px;" /><br />
+                            <input type="file" value="@Model.Image_to_work" class="form-control" name="Image_to_work" accept="image/" />
+                            @Html.ValidationMessageFor(model => model.Image_to_work, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <h5>صورة الخدمة</h5>
+                        <div class="col-md-10">
+                            <img src="~/Images/@Model.Image_to_work10" style="width:70px;height:70px;" /><br />
+                            <input type="file" value="@Model.Image_to_work10" class="form-control" name="Image_to_work10" accept="image/" />
+                            @Html.ValidationMessageFor(model => model.Image_to_work10, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <h5>صورة الخدمة</h5>
+                        <div class="col-md-10">
+                            <img src="~/Images/@Model.Image_to_work2" style="width:70px;height:70px;" /><br />
+                            <input type="file" value="@Model.Image_to_work2" class="form-control" name="Image_to_work2" accept="image/" />
+                            @Html.ValidationMessageFor(model => model.Image_to_work2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <h5>صورة الخدمة</h5>
+                        <div class="col-md-10">
+                            <img src="~/Images/@Model.Image_to_work3" style="width:70px;height:70px;" /><br />
+                            <input type="file" value="@Model.Image_to_work3" class="form-control" name="Image_to_work3" accept="image/" />
+                            @Html.ValidationMessageFor(model => model.Image_to_work3, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" style="background-color:burlywood;color:black" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("العودة للشاشة الرئيسيه", "Index")
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </main>
+</div>

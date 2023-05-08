@@ -1,0 +1,164 @@
+﻿@using MVC_MAS_AYAH.Models
+@model LoginViewModel
+
+
+@{
+    ViewBag.Title = "التسجيل";
+}
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head runat="server">
+        <link href="~/assets/css/main.css" rel="stylesheet">
+        <style>
+            .header .logo img {
+                max-height: 66px;
+                margin-right: 6px;
+            }
+
+            @@media only screen and (min-device-width:0px) and (max-device-width:480px) {
+                .navimg {
+                    width: 76px;
+                    height: 40px;
+                }
+
+                .breadcrumbs h2 {
+                    font-size: x-large;
+                }
+            }
+
+            .cascading-right {
+                margin-right: -50px;
+            }
+
+            @@media (max-width: 991.98px) {
+                .cascading-right {
+                    margin-right: 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <main id="main">
+
+            <div class="breadcrumbs d-flex align-items-center" style="background-image: url('../assets/img/breadcrumbs-bg.jpg');">
+                <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+                    <h2>تسجيل دخول</h2>
+                    <ol>
+                        <li><a href="https://localhost:44305/Home/Index">الرئيسيه</a></li>
+                        <li>تسجيل دخول</li>
+                    </ol>
+
+                </div>
+            </div><!-- End Breadcrumbs -->
+            <form id="form1" runat="server">
+
+                <!-- Section: Design Block -->
+                <!-- Jumbotron -->
+                <div class="container py-4">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-lg-6 mb-5 mb-lg-0">
+                            <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+                                <div class="card-body p-5 shadow-5 text-center">
+                                    <h2 class="fw-bold mb-5" style="color:#2B3467;font-family:Caveat Regular;">التسجيل</h2>
+
+
+                                    <!-- Email input -->
+                                    @*<div class="form-outline mb-4">
+                                            <label class="form-label" for="form3Example3" style="color:#2B3467;font-family:Caveat Regular;">Email</label>
+                                            <input type="email" id="form3Example3" class="form-control" style="border:4px solid #5E5656" />
+                                        </div>*@
+                                    <div class="form-outline mb-4" style="color:#2B3467;font-family:Caveat Regular;">
+                                        @*@Html.LabelFor(m => m.Email, new { @class = "form-label" })*@
+                                        <label class="form-label" for="form3Example3" style="color:#2B3467;font-family:Caveat Regular;">البريد الإلكتروني</label>
+
+                                        <div class="" style="border:4px solid #5E5656">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "" })
+                                        </div>
+                                    </div>
+
+                                    <!-- Password input -->
+                                    @*<div class="form-outline mb-4">
+                                            <label class="form-label" for="form3Example4" style="color:#2B3467;font-family:Caveat Regular;">كلمة المرور</label>
+                                            <input type="password" id="form3Example4" class="form-control" style="border:4px solid #5E5656" />
+                                        </div>*@
+
+                                    <div class="form-outline mb-4" style="color:#2B3467;font-family:Caveat Regular;">
+                                        @*@Html.LabelFor(m => m.Password, new { @class = "form-label" })*@
+                                        <label class="form-label" for="form3Example4" style="color:#2B3467;font-family:Caveat Regular;">كلمة المرور</label>
+                                        <div class="" style="border:4px solid #5E5656">
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "" })
+                                        </div>
+                                    </div>
+
+                                    <!-- Checkbox -->
+                                    @*<div class="form-check d-flex justify-content-center mb-4">
+                                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                                            <label class="form-check-label" for="form2Example33" style="color:#2B3467;font-family:Caveat Regular;">
+                                                Remember me
+                                            </label>
+                                        </div>*@
+                                    @*<div class="form-group">
+                                            <div class="form-check d-flex justify-content-center mb-4">
+                                                <div class="form-check-input me-2">
+                                                    @Html.CheckBoxFor(m => m.RememberMe)
+
+                                                        @Html.LabelFor(m => m.RememberMe)
+
+                                                </div>
+                                            </div>
+                                        </div>*@
+
+                                    <!-- Submit button -->
+                                    @*<button type="submit" class="btn btn-primary btn-block mb-4" style="color: white;font-family:Caveat Regular;border:2px solid #5E5656;background-color:#2B3467;">
+                                            log in
+                                        </button>*@
+                                    <div class="form-group">
+                                        <div class="">
+                                            <input type="submit" value="تسجيل" class="btn btn-primary btn-block mb-4" style="color: white;font-family:Caveat Regular;border:2px solid #5E5656;background-color:#2B3467;" />
+                                        </div>
+                                    </div>
+
+                                    <!-- Register buttons -->
+                                    <div class="text-center">
+                                        @*<p style="color:#2B3467;font-family:Caveat Regular;">
+                                                don't have an account? <a href="Registration.aspx" class="text-muted">
+                                                    <br />
+                                                    <u> sign up</u>
+                                                </a>
+                                            </p>*@
+                                        <p style="color:#2B3467;font-family:Caveat Regular;">
+                                            @Html.ActionLink("غير مسجل من قبل؟ اضغط هنا للتسجيل ", "Register")
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 mb-5 mb-lg-0">
+                            <img src="~/assets/img/regs.png" class="w-100 rounded-4 shadow-4"
+                                 alt="" />
+                        </div>
+
+                        <!-- Jumbotron -->
+                        <!-- Section: Design Block -->
+                    </div>
+            </form>
+        </main>
+    </body>
+</html>
+}

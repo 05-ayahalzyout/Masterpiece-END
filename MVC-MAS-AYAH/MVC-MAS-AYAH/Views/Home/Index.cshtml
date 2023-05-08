@@ -1,0 +1,496 @@
+﻿@model IEnumerable<MVC_MAS_AYAH.Service_owners>
+
+
+@{
+    ViewBag.Title = "الرئيسيه";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head runat="server">
+    <style>
+        .header .logo img {
+            max-height: 66px;
+            margin-right: 6px;
+        }
+
+        .free {
+            margin-left: 13%;
+        }
+
+        @@media only screen and (min-device-width:0px) and (max-device-width:480px) {
+            .homeimg {
+                width: 148px;
+                height: 60px;
+            }
+
+            .navimg {
+                width: 76px;
+                height: 40px;
+            }
+
+            .free {
+                margin-left: -7%;
+            }
+
+            .hero .info p {
+                font-size: medium;
+            }
+        }
+
+        @@media only screen and (min-device-width:481px) and (max-device-width:768px) {
+            .free {
+                margin-left: 1%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="hero">
+
+        <div class="info d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h2 data-aos="fade-down">اهلا بك<br /> <img class="homeimg" src="~/assets/img/logo.png" width="400" height="200" /></h2>
+                        <p data-aos="fade-up">  نقدم خدماتنا في جميع مجالات البناء والطلاء والسيراميك والاسمنت والديكورات و جميع انواع التمديدات,نلبي جميع الطلبات لاننا نمتلك كادر اكثر من رائع من العمال انت اختر من يناسب مشروعك</p>
+                        <a data-aos="fade-up" data-aos-delay="200" href="https://localhost:44305/Account/Register" class="btn-get-started">سجل لدينا</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="hero-carousel" class="carousel slide " data-bs-ride="carousel" data-bs-interval="5000">
+
+            <div class="carousel-item active" style="background-image: url('../assets/img/wow.jpg')"></div>
+            <div class="carousel-item" style="background-image: url('../assets/img/hero-carousel/hero-carousel-1.jpg')"></div>
+            <div class="carousel-item" style="background-image: url('../assets/img/waw.jpg')"></div>
+
+            <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+            </a>
+
+            <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+            </a>
+
+        </div>
+
+    </section><!-- End Hero Section -->
+
+    <main id="main">
+
+
+
+
+        <section id="projects" class="projects">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-header">
+                    <h2>الخدمات</h2>
+                    <p>نملك افضل الخبراء القادرين بعون من الله عز وجل عمل اجمل المشاريع وهنا نقدم لكم الاعمال التي يقدموها</p>
+                </div>
+
+                <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
+
+                    <ul class="portfolio-flters" data-aos="fade-up" data-aos-delay="100">
+                        <li data-filter="*" class="filter-active" style="font-size:medium">جميع الخدمات</li>
+                        <br />
+
+                        @foreach (var type in Model.Select(a => a.Servicess.Service_name).Distinct())
+                        {
+                            <li data-filter=".@type" style="font-size:medium">
+                                @type
+                            </li>
+                        }
+
+
+                    </ul>
+
+                    <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-lg-4 col-md-6 portfolio-item @item.Servicess.Service_name">
+                                <div class="portfolio-content h-100">
+                                    <img src="~/images/@item.Image_to_work" class="img-fluid" alt="@item.Servicess.Service_name" style="width:100%;height:200px">
+                                    <div class="portfolio-info">
+                                        <p>@item.Servicess.Service_name</p>
+                                        <div class="portfolio-links">
+                                            <a href="~/images/@item.Image_to_work" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@item.Servicess.Service_name"><i class="bx bx-plus"></i></a>
+                                            <a href="Service_owners/Index/@item.Id" title="Go to the photographer's page" target="_blank"><i class="bx bx-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            //End Projects Item
+                        }
+                    </div>
+
+                </div>
+
+            </div>
+            <br /><br />
+            <a href="https://localhost:44305/Servicessesuser/ser" title="More Details" class="btn btn-outline-primary btn-sm" style=" color:white;   background: linear-gradient(45deg, rgb(19 94 148 / 80%), rgb(224 213 213 / 80%));margin-left:40%; font-size:larger"> رؤية الخدمات</a>
+
+        </section>
+
+
+
+
+        <!-- ======= Constructions Section ======= -->
+        <section id="constructions" class="constructions">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-header">
+                    <h2>
+                        الخطوات
+                    </h2>
+                    <p> نطرح عليك طريقك لاستخدام "مريح وسهل وسريع " للتعامل مع الموقع والحصول على الخدمة بسلالة وكلنا امل بان تستمتع </p>
+                </div>
+
+                <!-- ======= Features Section ======= -->
+                <section id="features" class="features section-bg">
+                    <div class="container" data-aos="fade-up">
+
+                        <ul class="nav nav-tabs row  g-2 d-flex">
+
+                            <li class="nav-item col-3">
+                                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+                                    <h4>أحتاج إلى خدمات</h4>
+                                </a>
+                            </li><!-- End tab nav item -->
+
+                            <li class="nav-item col-3">
+                                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
+                                    <h4>انضم كمالك خدمة</h4>
+                                </a><!-- End tab nav item -->
+
+
+                        </ul>
+
+                        <div class="tab-content">
+
+                            <div class="tab-pane active show" id="tab-1">
+                                <div class="row">
+                                    <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                                        <h3 style="direction: rtl">خطوات الحصول على الخدمة التي تحتاجها</h3>
+                                        <p class="fst-italic" style="direction: rtl">
+                                            تستطيع ان تحصل على العديد من الخدمات كل ما عليك فعله ان تصبح جزء منا عبر الضغط هنا  <a href="https://localhost:44305/Account/Register" class="text-muted">
+                                                <br />
+                                                <u style="color:#feb900">للانتقال لصفحة التسجيل</u>
+                                            </a>
+                                        </p>
+                                        <ul style="direction: rtl">
+                                            <li><i class="bi bi-check2-all"></i> عند الانتقال الى الاسفل اختر الخدمة التي تناسبك</li>
+                                            <li><i class="bi bi-check2-all"></i> بعد اختيار الخدمة تنتقل لاختيار العامل الذي تريدة</li>
+                                            <li><i class="bi bi-check2-all"></i>اخيرا يمكنك التواصل مع العامل من خلال الطريقة التي تناسبك <br />"رقم الهاتف,البريد الالكتروني"</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
+                                        <img src="~/assets/img/constructions-1.jpg" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div><!-- End tab content item -->
+
+                            <div class="tab-pane" id="tab-2">
+                                <div class="row">
+                                    <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                                        <h3 style="direction: rtl">خطوات للانضمام الى عمالنا المميزون</h3>
+                                        <p class="fst-italic" style="direction: rtl">
+                                            تستطيع الانضمام لعرض خدمتك , كل ما عليك فعله ان تصبح جزء منا عبر الضغط هنا  <a href="https://localhost:44305/Account/Register" class="text-muted">
+                                                <br />
+                                                <u style="color:#feb900">للانتقال لصفحة التسجيل</u>
+                                            </a>
+                                        </p>
+                                        <ul style="direction: rtl">
+                                            <li><i class="bi bi-check2-all"></i> بعد التسجيل بصفة ادمن يتم فتح لك صفحة شخصية اختر ما تريد عرضة للزبائن</li>
+                                            <li><i class="bi bi-check2-all"></i> تنتقل لطريقة الدفع واختر منها الخيار الذي يناسبك</li>
+                                            <li><i class="bi bi-check2-all"></i>اخيرا ادخل معلومات تخص طرق الدفع</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6 order-1 order-lg-2 text-center">
+                                        <img src="~/assets/img/cont.jpg" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </section><!-- End Features Section -->
+
+            </div>
+        </section><!-- End Constructions Section -->
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="services section-bg">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-header">
+                    <h2>الخدمات</h2>
+                    <p>  شرح للخدمات التي يقدمها موقعنا</p>
+                </div>
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item  position-relative">
+                            <div class="icon">
+                                <i class="fa-solid fa-mountain-city" style="direction: rtl"></i>
+                            </div>
+                            <h3 style="direction: rtl">البناء</h3>
+                            <p style="direction: rtl">
+                                نقدم خدمات البناء من الصفر بالاضافة للترميم لاي منشاء ،و البناء بعدة اشكال بحسب ذوق الزبون ،مثال:
+                                <br />الطراز المصري القديم.
+                                <br />  الطرز الكلاسيكي.<br />
+                                الطراز الاغريقي.<br />
+                                الطراز الروماني.<br />
+                                الطراز الفارسي.<br />
+                                الطراز الحديث.<br />
+                                طرازك الشخصي.<br />
+
+                                <a href="https://localhost:44305/Home/sample" class="readmore stretched-link">الانتقال للصفحة لمشاهدة المزيد <i class="bi bi-arrow-right"></i></a>
+                            </p>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-item position-relative">
+                            @*<div class="icon">
+                                    <i class="fa-solid fa-arrow-up-from-ground-water" style="direction: rtl"></i>
+                                </div>
+                                <h3 style="direction: rtl">مجانا" حساب تكلفة البناء"</h3>
+                                <p style="direction: rtl">
+                                    جميع النماذج لتسعيرة تقريبية بناء على تكلفة المتر لبناء تسليم مفتاح. يؤخذ في الاعتبار الممارسات المتبعة في المملكة الاردنية الهاشمية لحساب التكلفة (التقديرية)
+                                    <br /><a href="service-details.html" class="readmore stretched-link">Learn more <i class="bi bi-arrow-right"></i></a>
+                                    لحساب التكلفة التقريبية اضغط هنا
+                                </p>*@
+                            <img src="~/ayahadmn/assets/img/free.jpg" width="250" height="280" class="free" />
+                            <br /><br />
+                            <br /><br />
+                            <p style="text-align:center;font-size:xx-large">خدمات مجانية</p>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-item position-relative">
+                            <div class="icon">
+                                <i class="fa-solid fa-compass-drafting" style="direction: rtl"></i>
+                            </div>
+                            <h3 style="direction: rtl">مجانا" تطبيقات فرش وتصميم المنازل والمباني"</h3>
+                            <p style="direction: rtl">
+                                أمر رائع أن نكون قادرين على تصميم منازلنا بأنفسنا من حيث المساحة الداخلية و التصميم و الدهانات و وضع قطع الأثاث، في الحقيقة لم يعد هذا أمراً صعباً فهناك العديد من البرامج و تطبيقات تصميم المنازل المجانية التي يمكنها مساعدتنا في آداء هذه المهمة بسهولة ويسر
+                                أفضل 12 برنامج و تطبيق مجاني لتصميم و فرش المنازل و المباني<a href="https://localhost:44305/Home/Design" class="readmore stretched-link">الانتقال للصفحة لمشاهدة المزيد  <i class="bi bi-arrow-right"></i></a>
+                            </p>
+                        </div>
+                    </div><!-- End Service Item -->
+                </div>
+            </div>
+        </section><!-- End Services Section -->
+        <!-- ======= Alt Services Section ======= -->
+        <section id="alt-services" class="alt-services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row justify-content-around gy-4">
+                    <div class="col-lg-6 img-bg" style="background-image: url('../assets/img/alt-services.jpg');" data-aos="zoom-in" data-aos-delay="100"></div>
+
+                    <div class="col-lg-5 d-flex flex-column justify-content-center">
+                        <h3 style="direction: rtl">امور واجب معرفتها قبل بناء منزل جديد</h3>
+                        <p style="direction: rtl">يعتبر المنزل من المتطلبات الأساسية للحياة، فمن خلاله يجد الشخص الاستقرار والأمان الاجتماعي والنفسي مع أفراد عائلته، فإذا كنت بصدد بناء منزل احلامك.</p>
+
+                        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
+                            <i class="bi bi-easel flex-shrink-0"></i>
+                            <div>
+                                <h4 style="direction: rtl"><a class="stretched-link">مرحلة حفر الأساس</a></h4>
+                                <p style="direction: rtl">
+                                    بدايةً يتم أخذ عينة من التربة لإجراء فحص للتأكد من صلاحيتها للبناء عليها، وتختلف هذه المرحلة باختلاف نوعية التربة ومساحة
+                                    المنزل وعدد الطوابق التي ستُبنى فوقها، وفي حال ظهور ماء أثناء الحفر يتم الاستعانة بآلات لضخ الماء منها، ومن ثم تبدأ عمليات حفر الأرض لوضع الحديد وصب الخرسانة
+                                </p>
+                            </div>
+                        </div>
+                        <!-- End Icon Box -->
+
+                        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="200">
+                            <i class="bi bi-brightness-high flex-shrink-0"></i>
+
+                            <div>
+                                <h4 style="direction: rtl"><a class="stretched-link">مرحلة البناء</a></h4>
+                                <p style="direction: rtl">بعد الانتهاء من وضع الأساسات والخرسانة، تبدأ عمليات البناء، حيث يُستخدم الطوب الأبيض بكثرة في البناء، حيث يعتبر عازل للحرارة ومقاوم للحريق وخفيف الوزن، في حين أنه من الأنواع ذات القدرة العالية على التحمل</p>
+                            </div>
+                        </div>
+                        <!-- End Icon Box -->
+
+                        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="300">
+                            <i class="bi bi-brightness-high flex-shrink-0"></i>
+                            <div>
+                                <h4 style="direction: rtl"><a class="stretched-link">أعمال السباكة</a></h4>
+                                <p style="direction: rtl">في هذه المرحلة يتم تركيب مواسير ضخ الماء والصرف الصحي وأساسيات الحمامات والمطابخ أيضاً</p>
+                            </div>
+                        </div>
+                        <!-- End Icon Box -->
+
+                        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
+                            <i class="bi bi-brightness-high flex-shrink-0"></i>
+                            <div>
+                                <h4 style="direction: rtl"><a class="stretched-link">الكهرباء</a></h4>
+                                <p style="direction: rtl">
+                                    هذه المرحلة مهمة وحرجة جداً بنفس الوقت، حيث يجب وضع أساسيات الكهرباء والأسلاك في الحائط، وبنفس الوقت يجب تركيب أنظمة الإنارة وتحديد قوة الكهرباء في المنزل، هذا بالإضافة إلى ضرورة
+                                    تحديد موقع المكيفات لمعرفة المكان الصحيح لإجراء التمديدات.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- End Icon Box -->
+                        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
+                            <i class="bi bi-brightness-high flex-shrink-0"></i>
+                            <div>
+                                <h4 style="direction: rtl"><a class="stretched-link">مرحلة التشطيبات</a></h4>
+                                <p style="direction: rtl">
+                                    تركيب الحلوق الخشبية :حلوق أبواب: تتألف حلوق الأبواب من 3 أضلاع، ويكون سمك الحلق للباب حوالي 5 سم
+                                    حلوق شبابيك: مكونة من 4 أضلاع ترتفع تقريباً متر عن سطح الأرض
+                                    حلوق الشرفات: يبلغ ضلع الحلق 20 سم<br />
+
+                                </p>
+                            </div>
+                        </div><!-- End Icon Box -->
+                        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
+                            <i class="bi bi-patch-check flex-shrink-0"></i>
+                            <div>
+                                <h4 style="direction: rtl"><a class="stretched-link">المراحل النهائية</a></h4>
+                                <p style="direction: rtl">
+                                    المحارة:تغطية الجدران وأسقف المنزل بواسطة مواد سميكة ,الأرضيات:تركيب الأرضيات أو السيراميك,
+                                    الدهانات:تسبق هذه الخطوة مرحلة مهمة، وهي وضع طبقتين من المعجون على الجدران، ومن ثم يليها الدهان أو ورق الحائط ,مرحلة الفرش والديكورات
+                                </p>
+                            </div>
+                        </div><!-- End Icon Box -->
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Alt Services Section -->
+        <!-- ======= Testimonials Section ======= -->
+        <!--<section id="testimonials" class="testimonials section-bg">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-header">
+                    <h2>ارائكم</h2>
+                    <p>جميع اراء من تعاملوا معنا,ولا تنسى ان تترك لنا تعليقك.</p>
+                </div>
+
+                <div class="slides-2 swiper">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-wrap">
+                                <div class="testimonial-item">
+                                    <img src="~/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                                    <h3>Saul Goodman</h3>
+                                    <h4>Ceo &amp; Founder</h4>
+                                    <div class="stars">
+                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <p>
+                                        <i class="bi bi-quote quote-icon-left"></i>
+                                        Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                                        <i class="bi bi-quote quote-icon-right"></i>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>-->
+        <!-- End testimonial item -->
+        <!--<div class="swiper-slide">
+            <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                    <img src="~/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                    <h3>Sara Wilsson</h3>
+                    <h4>Designer</h4>
+                    <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                        <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                </div>
+            </div>
+        </div>-->
+        <!-- End testimonial item -->
+        <!--<div class="swiper-slide">
+            <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                    <img src="~/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                    <h3>Jena Karlis</h3>
+                    <h4>Store Owner</h4>
+                    <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                        <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                </div>
+            </div>
+        </div>-->
+        <!-- End testimonial item -->
+        <!--<div class="swiper-slide">
+            <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                    <img src="~/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                    <h3>Matt Brandon</h3>
+                    <h4>Freelancer</h4>
+                    <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                        <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                </div>
+            </div>
+        </div>-->
+        <!-- End testimonial item -->
+        <!--<div class="swiper-slide">
+            <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                    <img src="~/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                    <h3>John Larson</h3>
+                    <h4>Entrepreneur</h4>
+                    <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                        <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                </div>
+            </div>
+        </div>-->
+        <!-- End testimonial item -->
+        <!--</div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </section>-->
+        <!-- End Testimonials Section -->
+
+
+    </main><!-- End #main -->
+
+
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+
+
+</body>
+

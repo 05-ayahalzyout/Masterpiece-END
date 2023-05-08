@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MVC_MAS_AYAH.Servicess>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<main id="main">
+
+   
+    <section id="projects" class="projects">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>Works We Offer</h2>
+                <p>نملك افضل الخبراء القادرين بعون من الله عز وجل عمل اجمل المشاريع وهنا نقدم لكم الاعمال التي يقدموها</p>
+            </div>
+
+            <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
+
+                <ul class="portfolio-flters" data-aos="fade-up" data-aos-delay="100">
+                    <li data-filter="*" class="filter-active" style="font-size:medium">(All Service)</li>
+                    <br />
+                    <li data-filter=".filter-remodeling" style="font-size:medium">(construction-Roof Insulation)</li>
+                    <li data-filter=".filter-construction" style="font-size:medium">(Tiles-Kitchen design)</li>
+                    <li data-filter=".filter-repairs" style="font-size:medium">(Electricity Extension-Sewage extension-Water extension)</li>
+                    <li data-filter=".filter-design" style="font-size:medium">(Interior Decoration-Wall painting)</li>
+                </ul><!-- End Projects Filters -->
+
+                <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
+                            <div class="portfolio-content h-100">
+                                @*<img src="~/assets/img/projects/construction-1.jpg"  alt="">*@
+                                @*@Html.DisplayFor(modelItem => , new { @class = "" })*@
+                                <img src="~/images/@item.Servic_image" width="400" height="350" class="img-fluid" />
+
+                                <div class="portfolio-info">
+                                    <h4>@Html.DisplayFor(modelItem => item.Service_name)</h4>
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </p>
+                                    <a href="~/assets/img/projects/construction-1.jpg" title="Remodeling 1" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                    <a href="https://localhost:44305/Service_owners/Index" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                </div>
+                            </div>
+                        </div><!-- End Projects Item -->
+                    }
+
+                    <!-- End Projects Item -->
+
+                </div>
+                <!-- End Projects Container -->
+
+            </div>
+
+        </div>
+    </section>
+</main>
